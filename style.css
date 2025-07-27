@@ -1,0 +1,258 @@
+/* General reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  /* Fallback for performance on low-end devices */
+  background: #1a3c5e;
+  background: linear-gradient(135deg, #0f2027, #2c5364, #f7971e, #ffd200);
+  min-height: 100vh;
+  font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.5s ease;
+}
+
+/* Dark mode styles */
+body.dark {
+  background: linear-gradient(135deg, #0f0f1b, #1e3a5f, #7b3f00, #b8860b);
+}
+
+/* Container with subtle entry animation */
+.container {
+  background: #fff;
+  box-shadow: 0 12px 24px rgba(30, 30, 40, 0.2);
+  border-radius: 18px;
+  padding: 40px 32px;
+  max-width: 400px;
+  text-align: center;
+  animation: slideIn 0.5s ease-out;
+  position: relative;
+}
+
+body.dark .container {
+  background: #1e1e2e;
+  color: #e0e0e0;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+}
+
+/* Slide-in animation for container */
+@keyframes slideIn {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.container:hover {
+  transform: translateY(-6px) scale(1.01);
+  transition: transform 0.2s ease;
+}
+
+/* Theme toggle button */
+#themeToggle {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  transition: background 0.2s;
+}
+
+#themeToggle:hover, #themeToggle:focus {
+  background: rgba(247, 151, 30, 0.2);
+  outline: none;
+}
+
+.theme-icon {
+  stroke: #f7971e;
+}
+
+body.dark .theme-icon {
+  stroke: #ffd200;
+}
+
+body.dark .moon {
+  display: block;
+}
+
+body.dark .sun {
+  display: none;
+}
+
+/* Heading with gradient text and subtle animation */
+h1 {
+  font-size: 2.2rem;
+  background: linear-gradient(90deg, #f7971e, #ffd200, #2c5364);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+  margin-bottom: 20px;
+  animation: fadeInText 1s ease;
+}
+
+body.dark h1 {
+  background: linear-gradient(90deg, #b8860b, #ffd700, #4682b4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@keyframes fadeInText {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Paragraph text */
+p {
+  font-size: 1.1rem;
+  color: #2c5364;
+  margin-bottom: 20px;
+}
+
+body.dark p {
+  color: #b0c4de;
+}
+
+/* Button with enhanced hover and focus effects */
+button#getJokeBtn {
+  background: linear-gradient(90deg, #f7971e 0%, #ffd200 100%);
+  color: #222;
+  font-size: 1.15rem;
+  font-weight: 600;
+  border: none;
+  outline: none;
+  padding: 14px 28px;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(247, 151, 30, 0.18);
+  transition: background 0.2s, transform 0.12s, box-shadow 0.15s;
+}
+
+button#getJokeBtn:hover,
+button#getJokeBtn:focus {
+  background: linear-gradient(90deg, #ffd200 0%, #f7971e 100%);
+  color: #111;
+  transform: scale(1.04);
+  box-shadow: 0 6px 20px rgba(247, 151, 30, 0.25);
+  outline: 2px solid #ffd200; /* Accessibility for keyboard navigation */
+}
+
+/* Joke text with loading animation */
+#jokeText {
+  font-size: 1.2rem;
+  color: #2c5364;
+  min-height: 80px;
+  margin: 20px auto;
+  padding: 12px;
+  background: #f9f8f6;
+  border-radius: 9px;
+  border: 1px solid #ffd20033;
+  transition: background 0.2s, opacity 0.3s;
+}
+
+body.dark #jokeText {
+  background: #2a2a3a;
+  color: #e0e0e0;
+  border: 1px solid #b8860b33;
+}
+
+#jokeText.loading::after {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #ffd200;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-left: 8px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Setup and punchline styling */
+.setup {
+  font-weight: 500;
+  color: #333;
+}
+
+body.dark .setup {
+  color: #d3d3d3;
+}
+
+.punchline {
+  display: block;
+  margin-top: 10px;
+  font-style: italic;
+  color: #f7971e;
+}
+
+body.dark .punchline {
+  color: #ffd700;
+}
+
+/* Error state styling */
+#jokeText.error {
+  color: #d32f2f;
+}
+
+body.dark #jokeText.error {
+  color: #ff6b6b;
+}
+
+#jokeText.error button {
+  background: #d32f2f;
+  color: #fff;
+  padding: 8px 16px;
+  margin-top: 10px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+#jokeText.error button:hover,
+#jokeText.error button:focus {
+  background: #b71c1c;
+  outline: 2px solid #ff6b6b;
+}
+
+/* Responsive design */
+@media (max-width: 480px) {
+  .container {
+    max-width: 90vw;
+    padding: 20px 5vw;
+  }
+  h1 {
+    font-size: 1.8rem;
+  }
+  p {
+    font-size: 1rem;
+  }
+  #jokeText {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 360px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+  button#getJokeBtn {
+    padding: 12px 20px;
+    font-size: 1rem;
+  }
+}

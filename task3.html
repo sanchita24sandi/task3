@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Brighten your day with a random joke! Click to fetch a new one instantly.">
+  <title>Random Joke Generator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Added theme toggle button for visual intrigue -->
+    <button id="themeToggle" aria-label="Toggle between light and dark mode">
+      <svg class="theme-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path class="sun" d="M12 16a4 4 0 0 0 0-8 4 4 0 0 0 0 8zm0-12v2m0 14v2m-8-2h2m12 0h-2m-2.83-13.66l1.42 1.42m-9.9 16.97l1.42-1.42m-1.42-9.9l-1.42 1.42m16.97-9.9l-1.42 1.42"></path>
+        <path class="moon" d="M12 3a6 6 0 0 0 9 9 6 6 0 1 1-9-9z" style="display: none;"></path>
+      </svg>
+    </button>
+    <h1>Enjoy a Random Joke!</h1>
+    <p>Click below to fetch a new joke and brighten your day.</p>
+    <button id="getJokeBtn" aria-label="Fetch a new random joke">Get a Joke</button>
+    <!-- Added role and aria-live for accessibility -->
+    <div id="jokeText" role="region" aria-live="polite"></div>
+  </div>
+  <script defer src="script.js"></script>
+</body>
+</html>
